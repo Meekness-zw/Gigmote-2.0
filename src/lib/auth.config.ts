@@ -28,8 +28,24 @@ export const isAdminEmail = (email?: string | null): boolean => {
  * Imported by middleware. `auth.ts` extends this with the Prisma adapter +
  * provider list for the Node runtime.
  */
+// Refuse to fall back to a placeholder secret in production. A missing
+// AUTH_SECRET in prod would let Auth.js auto-generate a random one per
+// cold start — different on every serverless instance, guaranteeing
+// "no matching decryption secret" on every session lookup.
+const authSecret = (() => {
+  const fromEnv = process.env.AUTH_SECRET;
+  if (fromEnv && fromEnv.length >= 32) return fromEnv;
+  if (process.env.NODE_ENV === "production") {
+    throw new Error(
+      "AUTH_SECRET is missing or too short in production. " +
+        "Set a 32+ char value (e.g. `openssl rand -base64 32`) in your Vercel env vars."
+    );
+  }
+  return "dev-secret-change-me-in-production-9f3a8b2c1d4e5f6a7b8c9d0e1f2a3b4c";
+})();
+
 export const authConfig = {
-  secret: process.env.AUTH_SECRET ?? "dev-secret-change-me-in-production",
+  secret: authSecret,
   trustHost: true,
   pages: {
     signIn: "/admin/login",
