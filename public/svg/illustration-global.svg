@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Globe outline -->
+  <ellipse class="draw" cx="200" cy="150" rx="90" ry="70" stroke-dasharray="505" stroke-dashoffset="505"/>
+  <!-- Vertical center line -->
+  <path class="draw" d="M200 80 L200 220" stroke-dasharray="140" stroke-dashoffset="140"/>
+  <!-- Horizontal ellipse -->
+  <ellipse class="draw" cx="200" cy="150" rx="90" ry="25" stroke-dasharray="365" stroke-dashoffset="365" opacity="0.9"/>
+  <!-- Latitude lines -->
+  <path class="draw" d="M110 115 Q200 95 290 115" stroke-dasharray="195" stroke-dashoffset="195" stroke-width="1.5"/>
+  <path class="draw" d="M110 185 Q200 205 290 185" stroke-dasharray="195" stroke-dashoffset="195" stroke-width="1.5"/>
+  <!-- Location pins -->
+  <path class="draw" d="M120 100 L120 75 L120 100 M120 65 L120 55" stroke-dasharray="60" stroke-dashoffset="60"/>
+  <path class="draw" d="M280 100 L280 75 L280 100 M280 65 L280 55" stroke-dasharray="60" stroke-dashoffset="60"/>
+  <path class="draw" d="M200 200 L200 175 L200 200 M200 165 L200 155" stroke-dasharray="60" stroke-dashoffset="60"/>
+  <!-- Pulse rings -->
+  <circle class="draw" cx="200" cy="150" r="5" stroke-dasharray="31" stroke-dashoffset="31" fill="currentColor"/>
+</svg>

@@ -1,0 +1,33 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><title>mLab</title><meta name="generator" content="Gatsby 4.25.9"/><meta name="theme-color" content="#91dd09"/><style data-emotion="css "></style><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link rel="sitemap" type="application/xml" href="/sitemap/sitemap-index.xml"/><link rel="icon" href="/favicon-32x32.png" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png"/><link rel="preconnect" href="https://www.google-analytics.com"/><link rel="dns-prefetch" href="https://www.google-analytics.com"/><script>
+  
+  
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'G-3KLGEL4MZG', 'auto', {});
+      
+      
+      
+      
+      
+      }</script><link rel="preconnect" href="https://www.google-analytics.com"/><link rel="dns-prefetch" href="https://www.google-analytics.com"/><script>
+  
+  
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'G-8HGPG96E9D', 'auto', {});
+      
+      
+      
+      
+      
+      }</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><main style="color:#232129;padding:96px;font-family:-apple-system, Roboto, sans-serif, serif"><title>Not found</title><h1 style="margin-top:0;margin-bottom:64px;max-width:320px">Page not found</h1><p style="margin-bottom:48px">Sorry<!-- --> <span role="img" aria-label="Pensive emoji">😔</span> <!-- -->we couldn’t find what you were looking for.<br/><br/><a href="/">Go home</a>.</p></main></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/404.html";window.___webpackCompilationHash="cf7adb6e3a5a2343ca82";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-cc143a007779dd3ccccd.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-04e55c711fb90375a979.js"],"component---src-pages-404-js":["/component---src-pages-404-js-0c76c9296c9e88f275d9.js"],"component---src-pages-aimashup-js":["/component---src-pages-aimashup-js-f22aba19be2916be715a.js"],"component---src-pages-contact-js":["/component---src-pages-contact-js-27d5aa1da119b6b6c731.js"],"component---src-pages-index-js":["/component---src-pages-index-js-0d1632e42d1e07366919.js"],"component---src-pages-initiatives-js":["/component---src-pages-initiatives-js-0f6e316cc2b24ea1babf.js"],"component---src-pages-partners-js":["/component---src-pages-partners-js-3e33dbd0dc1e34259939.js"],"component---src-pages-pillers-js":["/component---src-pages-pillers-js-7619d4d7a59022b48c36.js"],"component---src-pages-resources-js":["/component---src-pages-resources-js-6f1795d3a12c573145e4.js"],"component---src-pages-what-we-do-js":["/component---src-pages-what-we-do-js-7187f0fc15b0410dd85b.js"],"component---src-pages-who-we-are-js":["/component---src-pages-who-we-are-js-2dcc3898e6ef3014c7b8.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-93835f2dc59db5a4ccd6.js"],"component---src-templates-news-js":["/component---src-templates-news-js-1e4c9e4a1b60fb8b9acc.js"],"component---src-templates-tags-js":["/component---src-templates-tags-js-1f8983776c78dd0d6c36.js"]};/*]]>*/</script><script src="/app-cc143a007779dd3ccccd.js" async=""></script><script src="/532a2f07-bd2801e252f7755cbf2d.js" async=""></script><script src="/framework-e493ef71512a8af5e682.js" async=""></script><script src="/webpack-runtime-9211812750eef8597ab1.js" async=""></script></body></html>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Connection lines -->
+  <path class="draw" d="M200 150 L200 120" stroke-dasharray="30" stroke-dashoffset="30"/>
+  <path class="draw" d="M200 120 L120 80" stroke-dasharray="95" stroke-dashoffset="95"/>
+  <path class="draw" d="M200 120 L280 80" stroke-dasharray="95" stroke-dashoffset="95"/>
+  <path class="draw" d="M200 150 L100 200" stroke-dasharray="110" stroke-dashoffset="110"/>
+  <path class="draw" d="M200 150 L300 200" stroke-dasharray="110" stroke-dashoffset="110"/>
+  <!-- Center person -->
+  <circle class="draw" cx="200" cy="150" r="25" stroke-dasharray="157" stroke-dashoffset="157"/>
+  <path class="draw" d="M185 175 L215 175" stroke-dasharray="30" stroke-dashoffset="30"/>
+  <!-- Top left person -->
+  <circle class="draw" cx="120" cy="80" r="20" stroke-dasharray="126" stroke-dashoffset="126"/>
+  <path class="draw" d="M108 100 L132 100" stroke-dasharray="24" stroke-dashoffset="24"/>
+  <!-- Top right person -->
+  <circle class="draw" cx="280" cy="80" r="20" stroke-dasharray="126" stroke-dashoffset="126"/>
+  <path class="draw" d="M268 100 L292 100" stroke-dasharray="24" stroke-dashoffset="24"/>
+  <!-- Bottom left person -->
+  <circle class="draw" cx="100" cy="200" r="22" stroke-dasharray="138" stroke-dashoffset="138"/>
+  <path class="draw" d="M86 222 L114 222" stroke-dasharray="28" stroke-dashoffset="28"/>
+  <!-- Bottom right person -->
+  <circle class="draw" cx="300" cy="200" r="22" stroke-dasharray="138" stroke-dashoffset="138"/>
+  <path class="draw" d="M286 222 L314 222" stroke-dasharray="28" stroke-dashoffset="28"/>
+</svg>

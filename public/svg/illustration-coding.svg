@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Laptop base -->
+  <path class="draw" d="M50 200 L350 200 L340 250 L60 250 Z" stroke-dasharray="600" stroke-dashoffset="600"/>
+  <!-- Laptop screen -->
+  <path class="draw" d="M70 80 L330 80 L340 195 L60 195 Z" stroke-dasharray="700" stroke-dashoffset="700"/>
+  <!-- Screen glow -->
+  <path class="draw" d="M85 95 L315 95 L315 180 L85 180 Z" stroke-dasharray="500" stroke-dashoffset="500" stroke-width="1.5" opacity="0.8"/>
+  <!-- Code brackets -->
+  <path class="draw" d="M120 120 L100 140 L120 160" stroke-dasharray="80" stroke-dashoffset="80"/>
+  <path class="draw" d="M280 120 L300 140 L280 160" stroke-dasharray="80" stroke-dashoffset="80"/>
+  <!-- Code lines -->
+  <path class="draw" d="M140 130 L260 130" stroke-dasharray="120" stroke-dashoffset="120"/>
+  <path class="draw" d="M140 145 L220 145" stroke-dasharray="80" stroke-dashoffset="80"/>
+  <path class="draw" d="M140 160 L240 160" stroke-dasharray="100" stroke-dashoffset="100"/>
+  <!-- Person head -->
+  <circle class="draw" cx="200" cy="245" r="12" stroke-dasharray="76" stroke-dashoffset="76"/>
+  <!-- Person body -->
+  <path class="draw" d="M200 258 L200 280 L185 295 L215 295 L200 280" stroke-dasharray="120" stroke-dashoffset="120"/>
+</svg>
