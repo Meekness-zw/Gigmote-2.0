@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Lock, Loader2, AlertTriangle } from "lucide-react";
 
@@ -13,16 +14,33 @@ import { ArrowLeft, ArrowRight, Lock, Loader2, AlertTriangle } from "lucide-reac
  *   2. We POST it to /api/admin-signin which decides whether this device
  *      is trusted for that email.
  *   3. If trusted: signIn("trusted-device") — instant session, no email.
- *      If not:     signIn("nodemailer") — sends a magic link, redirects
- *                  to /admin/login/check-email.
+ *      If not:     signIn("nodemailer") — sends a magic link, then we
+ *                  navigate to /admin/login/check-email.
  *
- * The signIn() calls use Auth.js' client SDK so cookies + CSRF are
- * handled automatically.
+ * Auth.js' `pages.error` is set to `/admin/login`, so any signin failure
+ * ends up back here with `?error=...`. We surface the message inline
+ * instead of just bouncing the user to a blank form.
  */
 export default function AdminLoginPage() {
+  return (
+    <Suspense fallback={<LoginShell />}>
+      <LoginForm />
+    </Suspense>
+  );
+}
+
+function LoginForm() {
+  const params = useSearchParams();
   const [email, setEmail] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Pick up any error Auth.js sent us back with.
+  useEffect(() => {
+    const code = params.get("error");
+    if (!code) return;
+    setError(humanizeAuthError(code));
+  }, [params]);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -32,7 +50,7 @@ export default function AdminLoginPage() {
 
     const lower = email.trim().toLowerCase();
     try {
-      // 1. Ask the server which provider to use for this email/device
+      // 1. Decide trusted-device vs magic-link
       const probe = await fetch("/api/admin-signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -43,26 +61,40 @@ export default function AdminLoginPage() {
         throw new Error(decision.error ?? "Too many attempts. Try again later.");
       }
 
-      // 2. Drive the appropriate Auth.js provider
       const method = decision.method as "trusted-device" | "magic-link";
+
+      // 2. Try trusted device first if applicable
       if (method === "trusted-device") {
         const res = await signIn("trusted-device", {
           email: lower,
           redirect: false,
         });
-        if (res?.error) {
-          // Trust check failed (shouldn't normally happen — fall back).
-          await signIn("nodemailer", { email: lower, callbackUrl: "/admin" });
+        if (res?.ok) {
+          window.location.href = "/admin";
           return;
         }
-        // Hard-navigate to /admin so the panel layout server-renders
-        // with the new session cookie.
-        window.location.href = "/admin";
-        return;
+        // Trust verification failed — fall through to magic link.
       }
 
-      // Magic link path
-      await signIn("nodemailer", { email: lower, callbackUrl: "/admin" });
+      // 3. Magic link. redirect:false so we can surface real errors
+      //    instead of letting Auth.js bounce to /admin/login?error=...
+      const res = await signIn("nodemailer", {
+        email: lower,
+        redirect: false,
+        callbackUrl: "/admin",
+      });
+
+      if (!res) {
+        throw new Error(
+          "Sign-in service unavailable. SMTP isn't configured on the server."
+        );
+      }
+      if (res.error) {
+        throw new Error(humanizeAuthError(res.error));
+      }
+
+      // Success — Auth.js sent the email. Show the check-inbox screen.
+      window.location.href = "/admin/login/check-email";
     } catch (err) {
       setError(err instanceof Error ? err.message : "Sign-in failed.");
       setBusy(false);
@@ -70,8 +102,57 @@ export default function AdminLoginPage() {
   }
 
   return (
+    <LoginShell>
+      <form onSubmit={onSubmit} className="mt-10 space-y-4">
+        <label className="flex flex-col gap-2">
+          <span className="text-[11px] font-mono uppercase tracking-[0.18em] text-cream-mute">
+            Work email
+          </span>
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            autoComplete="email"
+            placeholder="you@gigmote.com"
+            className="w-full rounded-xl border border-cream-line bg-ink-2 px-4 py-3 text-sm text-cream placeholder:text-cream-mute focus:border-gold/60 focus:outline-none focus:ring-2 focus:ring-gold/20 transition-colors"
+          />
+        </label>
+
+        <button
+          type="submit"
+          disabled={busy}
+          data-cursor="magnet"
+          className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-medium text-ink transition-transform hover:scale-[1.02] disabled:opacity-60 disabled:scale-100"
+        >
+          {busy ? (
+            <>
+              <Loader2 size={14} className="animate-spin" />
+              Signing in
+            </>
+          ) : (
+            <>
+              Continue
+              <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+            </>
+          )}
+        </button>
+
+        {error && (
+          <div className="flex items-start gap-3 rounded-2xl border border-danger/30 bg-danger/5 p-4 text-sm text-cream">
+            <AlertTriangle size={16} className="mt-0.5 shrink-0 text-danger" />
+            <span>{error}</span>
+          </div>
+        )}
+      </form>
+    </LoginShell>
+  );
+}
+
+function LoginShell({ children }: { children?: React.ReactNode }) {
+  return (
     <div className="relative isolate min-h-screen overflow-hidden bg-grain bg-ink">
-      {/* Ambient gold halo */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
@@ -118,49 +199,7 @@ export default function AdminLoginPage() {
             trusted for a year.
           </p>
 
-          <form onSubmit={onSubmit} className="mt-10 space-y-4">
-            <label className="flex flex-col gap-2">
-              <span className="text-[11px] font-mono uppercase tracking-[0.18em] text-cream-mute">
-                Work email
-              </span>
-              <input
-                type="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                autoComplete="email"
-                placeholder="you@gigmote.com"
-                className="w-full rounded-xl border border-cream-line bg-ink-2 px-4 py-3 text-sm text-cream placeholder:text-cream-mute focus:border-gold/60 focus:outline-none focus:ring-2 focus:ring-gold/20 transition-colors"
-              />
-            </label>
-
-            <button
-              type="submit"
-              disabled={busy}
-              data-cursor="magnet"
-              className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-medium text-ink transition-transform hover:scale-[1.02] disabled:opacity-60 disabled:scale-100"
-            >
-              {busy ? (
-                <>
-                  <Loader2 size={14} className="animate-spin" />
-                  Signing in
-                </>
-              ) : (
-                <>
-                  Continue
-                  <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
-                </>
-              )}
-            </button>
-
-            {error && (
-              <div className="flex items-start gap-3 rounded-2xl border border-danger/30 bg-danger/5 p-4 text-sm text-cream">
-                <AlertTriangle size={16} className="mt-0.5 shrink-0 text-danger" />
-                <span>{error}</span>
-              </div>
-            )}
-          </form>
+          {children}
 
           <div className="hairline my-10" />
 
@@ -181,4 +220,22 @@ export default function AdminLoginPage() {
       </div>
     </div>
   );
+}
+
+function humanizeAuthError(code: string): string {
+  switch (code) {
+    case "EmailSignin":
+    case "EmailSignInError":
+      return "Couldn't send the magic-link email. The server's SMTP credentials may be missing or incorrect — check SMTP_HOST, SMTP_USER, SMTP_PASS, SMTP_FROM_EMAIL in Vercel env vars.";
+    case "AccessDenied":
+      return "That email isn't on the admin allowlist. Check ADMIN_EMAILS on the server.";
+    case "Verification":
+      return "The magic link expired or has already been used. Request a new one.";
+    case "CredentialsSignin":
+      return "Trusted-device sign-in failed. Request a magic link to re-verify this browser.";
+    case "Configuration":
+      return "Server configuration error. AUTH_SECRET or the provider list is missing.";
+    default:
+      return `Sign-in failed (${code}).`;
+  }
 }
