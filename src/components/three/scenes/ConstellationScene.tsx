@@ -71,13 +71,11 @@ function StarField() {
         </bufferGeometry>
         <pointsMaterial color="#F6CE48" size={0.08} transparent opacity={0.95} depthWrite={false} />
       </points>
-      {/* @ts-expect-error R3F line element */}
       <lineSegments>
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[linePos, 3]} />
         </bufferGeometry>
         <lineBasicMaterial color="#F9F9F5" transparent opacity={0.18} depthWrite={false} />
-      {/* @ts-expect-error R3F line element */}
       </lineSegments>
     </group>
   );

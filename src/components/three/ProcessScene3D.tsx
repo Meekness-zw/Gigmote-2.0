@@ -46,11 +46,10 @@ const NODES = Array.from({ length: STEP_COUNT }, (_, i) => {
 });
 
 function ConnectorLine() {
-  const lineRef = useRef<THREE.Line>(null);
-  const matRef = useRef<THREE.LineBasicMaterial>(null);
-
-  const { points, positions } = useMemo(() => {
-    // Sample the path with a smooth Catmull-Rom curve for soft connectors
+  // We construct the THREE.Line manually and mount it via <primitive>,
+  // because the JSX <line> intrinsic collides with the SVG <line> type
+  // in TypeScript's lib.dom and there's no clean way to disambiguate.
+  const { line, material, total } = useMemo(() => {
     const curve = new THREE.CatmullRomCurve3(NODES, false, "catmullrom", 0.4);
     const pts = curve.getPoints(120);
     const arr = new Float32Array(pts.length * 3);
@@ -59,39 +58,26 @@ function ConnectorLine() {
       arr[i * 3 + 1] = p.y;
       arr[i * 3 + 2] = p.z;
     });
-    return { points: pts, positions: arr };
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute("position", new THREE.BufferAttribute(arr, 3));
+    const material = new THREE.LineBasicMaterial({
+      color: "#F6CE48",
+      transparent: true,
+      opacity: 0.4,
+      depthWrite: false,
+    });
+    const line = new THREE.Line(geometry, material);
+    return { line, material, total: pts.length };
   }, []);
 
-  const total = points.length;
-
   useFrame(() => {
-    if (matRef.current) {
-      // Pulse the line subtly
-      const p = processState.progress;
-      matRef.current.opacity = 0.25 + p * 0.4;
-    }
-    if (lineRef.current?.geometry) {
-      // Truncate the line to the reached progress so it "draws on"
-      const draw = Math.floor(processState.progress * total);
-      lineRef.current.geometry.setDrawRange(0, Math.max(2, draw));
-    }
+    const p = processState.progress;
+    material.opacity = 0.25 + p * 0.4;
+    const draw = Math.floor(p * total);
+    line.geometry.setDrawRange(0, Math.max(2, draw));
   });
 
-  return (
-    /* @ts-expect-error R3F line element is valid */
-    <line ref={lineRef}>
-      <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
-      </bufferGeometry>
-      <lineBasicMaterial
-        ref={matRef}
-        color="#F6CE48"
-        transparent
-        opacity={0.4}
-        depthWrite={false}
-      />
-    </line>
-  );
+  return <primitive object={line} />;
 }
 
 function Node({ index, position }: { index: number; position: THREE.Vector3 }) {

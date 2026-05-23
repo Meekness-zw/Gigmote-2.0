@@ -89,13 +89,11 @@ function Network({ count = 36 }: { count?: number }) {
   return (
     <group ref={groupRef}>
       {/* Connection lines */}
-      {/* @ts-expect-error R3F line element */}
       <lineSegments>
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[linePositions, 3]} />
         </bufferGeometry>
         <lineBasicMaterial color="#9AD2D2" transparent opacity={0.22} depthWrite={false} />
-      {/* @ts-expect-error R3F line element */}
       </lineSegments>
 
       {/* Nodes */}

@@ -25,7 +25,10 @@ export default async function AdminApplicationsPage({
   searchParams: Promise<{ status?: string; job?: string }>;
 }) {
   const params = await searchParams;
-  const statusFilter = (params.status as AppStatus | undefined) ?? null;
+  // statusFilter can be a real status, "all", or null (no filter chosen).
+  // The cast accepts arbitrary string values from the query string —
+  // anything outside the known set is treated as "no filter".
+  const statusFilter = (params.status as AppStatus | "all" | undefined) ?? null;
   const jobFilter = params.job ?? null;
 
   const where: any = {};
