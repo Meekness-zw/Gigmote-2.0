@@ -23,7 +23,7 @@ function GroundGrid() {
   return (
     <mesh ref={ref} rotation={[-Math.PI / 2.2, 0, 0]} position={[0, -1.5, -4]}>
       <planeGeometry args={[20, 20, 24, 24]} />
-      <meshBasicMaterial color="#F6CE48" wireframe transparent opacity={0.22} />
+      <meshBasicMaterial color="#C9A22E" wireframe transparent opacity={0.42} />
     </mesh>
   );
 }
@@ -55,9 +55,9 @@ function Pillars() {
         <mesh key={i} position={[p.x, -1.5 + p.h / 2, p.z]}>
           <boxGeometry args={[0.04, p.h, 0.04]} />
           <meshBasicMaterial
-            color="#F9F9F5"
+            color="#1A1A22"
             transparent
-            opacity={0.22}
+            opacity={0.32}
           />
         </mesh>
       ))}

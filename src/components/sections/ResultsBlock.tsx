@@ -34,10 +34,10 @@ const METRICS = [
 
 export function ResultsBlock() {
   return (
-    <section className="relative bg-cream py-24 text-ink md:py-36">
+    <section className="relative bg-ink py-24 text-cream md:py-36">
       <div className="mx-auto max-w-7xl px-6">
         <FadeIn className="mb-16 max-w-3xl">
-          <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/60 mb-5">
+          <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-cream-mute mb-5">
             — Real business impact
           </div>
           <h2 className="font-display text-4xl leading-[1.04] tracking-tighter md:text-6xl">
@@ -46,7 +46,7 @@ export function ResultsBlock() {
               stagger={0.05}
             />
           </h2>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-ink/70 md:text-lg">
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-cream-dim md:text-lg">
             Scale customer support, RCM, sales development, and back-office ops
             globally — without sacrificing compliance or quality.
           </p>
@@ -95,15 +95,15 @@ function Metric({
   }, [inView, target, i]);
 
   return (
-    <div ref={ref} className="relative flex flex-col gap-4 bg-cream p-8 md:p-10">
-      <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/60">
+    <div ref={ref} className="relative flex flex-col gap-4 bg-ink p-8 md:p-10">
+      <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-cream-mute">
         {label}
       </div>
       <div className="font-display text-5xl leading-none tracking-tightest tabular-nums md:text-6xl">
         {val}
         <span className="text-gold-deep">{suffix}</span>
       </div>
-      <p className="text-sm leading-relaxed text-ink/70">{body}</p>
+      <p className="text-sm leading-relaxed text-cream-dim">{body}</p>
     </div>
   );
 }

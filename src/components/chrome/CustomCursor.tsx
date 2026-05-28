@@ -115,7 +115,8 @@ export function CustomCursor() {
           width: 28px;
           height: 28px;
           border-radius: 9999px;
-          border: 1px solid rgba(249,249,245,0.42);
+          /* Dark ring on cream — was light on dark in the old palette. */
+          border: 1px solid rgba(15,15,18,0.34);
           pointer-events: none;
           will-change: transform, width, height, border-color, background-color;
           transition: width 0.18s ease-out, height 0.18s ease-out,
@@ -140,7 +141,8 @@ export function CustomCursor() {
           width: 6px;
           height: 6px;
           border-radius: 9999px;
-          background: #F6CE48;
+          /* Deep gold — bright gold disappears on cream. */
+          background: #C9A22E;
           pointer-events: none;
           will-change: transform;
         }
@@ -155,7 +157,7 @@ export function CustomCursor() {
           font-size: 10px;
           text-transform: uppercase;
           letter-spacing: 0.18em;
-          color: #F9F9F5;
+          color: #0F0F12;
         }
       `}</style>
       <div ref={ringRef} aria-hidden className="c-cursor-ring c-none">

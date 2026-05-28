@@ -22,9 +22,10 @@ function FlowSurface() {
     () => ({
       uTime: { value: 0 },
       uMouse: { value: new THREE.Vector2() },
-      uColorLow: { value: new THREE.Color("#0A0A0B") },
-      uColorMid: { value: new THREE.Color("#E8A67E") },
-      uColorHigh: { value: new THREE.Color("#F6CE48") },
+      // Light theme: dark ink valleys, deep gold ridges, bright gold peaks.
+      uColorLow: { value: new THREE.Color("#1A1A22") },
+      uColorMid: { value: new THREE.Color("#C16A3F") },
+      uColorHigh: { value: new THREE.Color("#C9A22E") },
     }),
     []
   );

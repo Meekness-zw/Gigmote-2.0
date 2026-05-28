@@ -1,47 +1,57 @@
 @import "tailwindcss";
 
 /*
- * Gigmote — Dark-first design system
- * Lusion craft × Linear discipline
+ * Gigmote — Light-first design system
+ * Editorial cream canvas × gold accent × ink emphasis
  * --------------------------------------------------
+ * Token semantics intentionally preserved so existing components stay
+ * valid: `bg-ink` was the dark canvas, now it's the light cream surface;
+ * `text-cream` was the light foreground, now it's ink. This lets us
+ * pivot the whole site by editing tokens, not classes.
+ *
  * Hierarchy:
- *   ink      → primary canvas (deepest)
- *   black    → section breaks
- *   cream    → typography + breath sections
+ *   ink      → primary canvas surface (was dark, now light)
+ *   cream    → primary foreground / text (was light, now ink)
  *   gold     → signature accent / WebGL highlights
  *   teal/sage/orange → tertiary industry accents
  */
 
 @theme {
-  /* ===== CORE PALETTE ===== */
-  --color-ink: #0A0A0B;          /* deepest canvas */
-  --color-ink-1: #101012;        /* slightly lifted */
-  --color-ink-2: #16161A;        /* surface */
-  --color-ink-3: #1F1F25;        /* elevated surface */
-  --color-ink-4: #2A2A33;        /* hover / border-strong */
+  /* ===== CORE PALETTE — LIGHT THEME =====
+     ink-* tokens are now the LIGHT surface ladder.
+     cream-* tokens are now the INK foreground ladder.
+     This means components written against the old dark theme get the
+     correct light-theme intent for free. */
+  --color-ink: #F9F9F5;          /* primary canvas (warm cream) */
+  --color-ink-1: #F3F3EE;        /* breath section / barely-elevated */
+  --color-ink-2: #EDEDE6;        /* card surface */
+  --color-ink-3: #E4E4DC;        /* elevated surface / hover */
+  --color-ink-4: #D4D4CA;        /* border-strong on light */
 
   --color-black: #1A1A1A;        /* legacy hugo-black, for parity */
 
-  --color-cream: #F9F9F5;        /* primary text on dark */
-  --color-cream-warm: #FFF9E6;
-  --color-cream-dim: rgba(249, 249, 245, 0.72);
-  --color-cream-mute: rgba(249, 249, 245, 0.48);
-  --color-cream-faint: rgba(249, 249, 245, 0.16);
-  --color-cream-line: rgba(249, 249, 245, 0.08);
+  /* cream-* is the foreground / "ink" type ramp now. Opacity-based so
+     the warm cream canvas reads through behind muted text. */
+  --color-cream: #0F0F12;        /* primary text — near-black ink */
+  --color-cream-warm: #2A2624;
+  --color-cream-dim: rgba(15, 15, 18, 0.72);  /* body copy */
+  --color-cream-mute: rgba(15, 15, 18, 0.50); /* secondary type */
+  --color-cream-faint: rgba(15, 15, 18, 0.14); /* faint chips/cards */
+  --color-cream-line: rgba(15, 15, 18, 0.10);  /* hairline dividers */
 
-  --color-gold: #F6CE48;          /* signature */
-  --color-gold-soft: #FFEA97;
-  --color-gold-deep: #C9A22E;
-  --color-gold-glow: rgba(246, 206, 72, 0.18);
+  --color-gold: #C9A22E;          /* signature — deeper for legibility on cream */
+  --color-gold-soft: #F6CE48;     /* lighter sibling, used as glow accent */
+  --color-gold-deep: #8C6F1A;     /* deepest gold, for high-contrast text */
+  --color-gold-glow: rgba(246, 206, 72, 0.28);
 
-  --color-teal: #9AD2D2;
-  --color-sage: #C7D6C3;
-  --color-orange: #E8A67E;
+  --color-teal: #2F8C8C;          /* darker teal for legibility on cream */
+  --color-sage: #6F8E6A;
+  --color-orange: #C16A3F;
 
   /* Signal */
-  --color-success: #6FE3A8;
-  --color-warn: #FFB867;
-  --color-danger: #FF7A7A;
+  --color-success: #1F9A5E;
+  --color-warn: #B97A1A;
+  --color-danger: #C03A3A;
 
   /* ===== BG / FG aliases ===== */
   --color-background: var(--color-ink);
@@ -82,19 +92,19 @@
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-  /* ===== SHADOW / GLOW ===== */
-  --shadow-glow-gold: 0 0 60px -10px rgba(246, 206, 72, 0.5),
-                       0 0 24px -8px rgba(246, 206, 72, 0.3);
-  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.04) inset,
-                 0 1px 2px rgba(0, 0, 0, 0.4),
-                 0 8px 32px rgba(0, 0, 0, 0.4);
-  --shadow-elevated: 0 1px 0 rgba(255, 255, 255, 0.05) inset,
-                     0 24px 64px -16px rgba(0, 0, 0, 0.6),
-                     0 8px 24px -8px rgba(0, 0, 0, 0.5);
+  /* ===== SHADOW / GLOW (tuned for light theme) ===== */
+  --shadow-glow-gold: 0 0 60px -10px rgba(246, 206, 72, 0.45),
+                       0 0 24px -8px rgba(246, 206, 72, 0.25);
+  --shadow-card: 0 1px 0 rgba(15, 15, 18, 0.02) inset,
+                 0 1px 2px rgba(15, 15, 18, 0.06),
+                 0 8px 32px rgba(15, 15, 18, 0.06);
+  --shadow-elevated: 0 1px 0 rgba(15, 15, 18, 0.03) inset,
+                     0 24px 64px -16px rgba(15, 15, 18, 0.14),
+                     0 8px 24px -8px rgba(15, 15, 18, 0.10);
 }
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   --background: var(--color-ink);
   --foreground: var(--color-cream);
 }
@@ -128,10 +138,10 @@ body {
   font-family: var(--font-mono);
 }
 
-/* Selection */
+/* Selection — gold on ink reads cleanly on light or dark */
 ::selection {
   background: var(--color-gold);
-  color: var(--color-ink);
+  color: #0F0F12;
 }
 
 /* Focus rings — keyboard only, never visible on click */
@@ -218,9 +228,9 @@ select:focus-visible {
   display: none;
 }
 
-/* Grain overlay — adds Lusion-ish filmic depth on dark panels.
+/* Grain overlay — subtle paper grain on light surfaces.
    No mix-blend-mode: avoids a compositor layer that has to repaint on
-   every scroll. Pure opacity on a fixed dark surface looks identical. */
+   every scroll. Opacity-only on cream renders like printed cardstock. */
 .bg-grain {
   position: relative;
 }
@@ -230,13 +240,15 @@ select:focus-visible {
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.7'/></svg>");
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.45'/></svg>");
 }
 
-/* Cursor halo — gold radial gradient that follows the pointer across
-   any [data-cursor-halo] element. CSS variables --halo-x, --halo-y,
-   and --halo-opacity are written by CursorHalo.tsx on pointermove. */
+/* Cursor halo — soft gold radial gradient that follows the pointer
+   across any [data-cursor-halo] element. CSS variables --halo-x,
+   --halo-y and --halo-opacity are written by CursorHalo.tsx on
+   pointermove. Multiply blend on cream gives a warm sun-spot rather
+   than the prior screen-blend on dark. */
 [data-cursor-halo] {
   --halo-x: 50%;
   --halo-y: 50%;
@@ -252,11 +264,11 @@ select:focus-visible {
   transition: opacity 400ms ease-out;
   background: radial-gradient(
     circle 360px at var(--halo-x) var(--halo-y),
-    rgba(246, 206, 72, 0.16),
-    rgba(246, 206, 72, 0.04) 40%,
+    rgba(246, 206, 72, 0.30),
+    rgba(246, 206, 72, 0.10) 40%,
     transparent 70%
   );
-  mix-blend-mode: screen;
+  mix-blend-mode: multiply;
   will-change: opacity;
 }
 

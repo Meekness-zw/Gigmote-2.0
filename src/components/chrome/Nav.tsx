@@ -95,7 +95,7 @@ export function Nav() {
           {/* CTA */}
           <div className="hidden lg:block">
             <MagneticLink href="/contact" strength={0.35} cursorLabel="Book →">
-              <span className="group relative inline-flex items-center gap-2 rounded-full border border-cream-faint bg-cream-faint px-5 py-2.5 text-sm font-medium text-cream backdrop-blur-md transition-colors hover:border-gold/50 hover:bg-gold hover:text-ink">
+              <span className="group relative inline-flex items-center gap-2 rounded-full border border-cream-faint bg-cream-faint px-5 py-2.5 text-sm font-medium text-cream backdrop-blur-md transition-colors hover:border-gold/50 hover:bg-gold hover:text-[#0F0F12]">
                 <span className="relative h-1.5 w-1.5 rounded-full bg-gold transition-colors group-hover:bg-ink">
                   <span className="absolute inset-0 animate-ping rounded-full bg-gold/50 group-hover:hidden" />
                 </span>
@@ -151,7 +151,7 @@ export function Nav() {
                 <TransitionLink
                   href="/contact"
                   onClick={() => setOpen(false)}
-                  className="block rounded-full bg-gold px-6 py-4 text-center font-medium text-ink"
+                  className="block rounded-full bg-gold px-6 py-4 text-center font-medium text-[#0F0F12]"
                 >
                   Book a Strategy Call
                 </TransitionLink>

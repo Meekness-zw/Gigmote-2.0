@@ -198,7 +198,7 @@ function CaseCard({
           <div className="pointer-events-none absolute top-6 right-6 grid h-12 w-12 place-items-center rounded-full border border-cream-faint bg-ink/40 backdrop-blur-md transition-transform duration-500 group-hover:scale-110 group-hover:border-gold/60 group-hover:bg-gold">
             <ArrowUpRight
               size={16}
-              className="text-cream transition-colors group-hover:text-ink"
+              className="text-cream transition-colors group-hover:text-cream"
             />
           </div>
         </Link>

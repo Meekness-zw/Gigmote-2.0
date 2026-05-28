@@ -115,9 +115,9 @@ function Node({ index, position }: { index: number; position: THREE.Vector3 }) {
       <mesh ref={ringRef}>
         <ringGeometry args={[0.55, 0.62, 64]} />
         <meshBasicMaterial
-          color="#F6CE48"
+          color="#C9A22E"
           transparent
-          opacity={0.4}
+          opacity={0.7}
           side={THREE.DoubleSide}
           depthWrite={false}
         />
@@ -126,9 +126,9 @@ function Node({ index, position }: { index: number; position: THREE.Vector3 }) {
       <mesh rotation={[Math.PI / 2, 0, 0]}>
         <ringGeometry args={[0.78, 0.79, 64]} />
         <meshBasicMaterial
-          color="#F9F9F5"
+          color="#1A1A22"
           transparent
-          opacity={0.12}
+          opacity={0.18}
           side={THREE.DoubleSide}
           depthWrite={false}
         />
@@ -136,12 +136,12 @@ function Node({ index, position }: { index: number; position: THREE.Vector3 }) {
       {/* Core */}
       <mesh ref={coreRef}>
         <icosahedronGeometry args={[0.22, 1]} />
-        <meshBasicMaterial color="#F6CE48" />
+        <meshBasicMaterial color="#C9A22E" />
       </mesh>
       {/* Glow halo */}
       <mesh>
         <sphereGeometry args={[0.42, 32, 32]} />
-        <meshBasicMaterial color="#F6CE48" transparent opacity={0.07} depthWrite={false} />
+        <meshBasicMaterial color="#F6CE48" transparent opacity={0.10} depthWrite={false} />
       </mesh>
     </group>
   );
@@ -169,7 +169,7 @@ function ProcessParticles({ count = 350 }: { count?: number }) {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
-      <pointsMaterial size={0.025} color="#F9F9F5" transparent opacity={0.4} depthWrite={false} />
+      <pointsMaterial size={0.025} color="#1A1A22" transparent opacity={0.28} depthWrite={false} />
     </points>
   );
 }
@@ -242,8 +242,8 @@ export function ProcessScene3D({ className }: { className?: string }) {
       >
         <Suspense fallback={null}>
           <ambientLight intensity={0.45} />
-          <pointLight position={[0, 4, 3]} intensity={1.2} color="#F6CE48" />
-          <pointLight position={[6, -2, -2]} intensity={0.4} color="#9AD2D2" />
+          <pointLight position={[0, 4, 3]} intensity={0.9} color="#F6CE48" />
+          <pointLight position={[6, -2, -2]} intensity={0.3} color="#2F8C8C" />
 
           <CameraScrub />
 

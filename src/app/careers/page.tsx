@@ -90,7 +90,7 @@ export default function CareersPage() {
             <Link
               href="/join-gigmote"
               data-cursor="magnet"
-              className="hidden rounded-full bg-gold px-5 py-2.5 text-sm font-medium text-ink hover:scale-[1.02] transition-transform md:inline-flex md:items-center md:gap-2"
+              className="hidden rounded-full bg-gold px-5 py-2.5 text-sm font-medium text-[#0F0F12] hover:scale-[1.02] transition-transform md:inline-flex md:items-center md:gap-2"
             >
               Apply now
               <ArrowRight size={14} />

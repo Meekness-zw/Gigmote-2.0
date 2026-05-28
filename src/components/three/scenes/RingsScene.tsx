@@ -20,7 +20,7 @@ function Rings() {
         tube: 0.012,
         axis: [Math.sin(i * 1.7), Math.cos(i * 1.3), Math.sin(i * 0.9)],
         speed: 0.05 + (i % 3) * 0.04,
-        color: i % 3 === 0 ? "#F6CE48" : "#F9F9F5",
+        color: i % 3 === 0 ? "#C9A22E" : "#1A1A22",
         opacity: 0.5 - i * 0.04,
       });
     }

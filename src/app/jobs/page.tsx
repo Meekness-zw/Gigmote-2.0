@@ -76,7 +76,7 @@ export default async function JobsPage() {
                   <Link
                     href="/join-gigmote"
                     data-cursor="magnet"
-                    className="inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-medium text-ink hover:scale-[1.02] transition-transform"
+                    className="inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-medium text-[#0F0F12] hover:scale-[1.02] transition-transform"
                   >
                     Join the bench
                     <ArrowUpRight size={14} />

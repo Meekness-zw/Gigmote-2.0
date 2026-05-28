@@ -77,7 +77,7 @@ function LatticeNode({
   return (
     <mesh ref={ref} position={[x, y, z]}>
       <octahedronGeometry args={[1, 0]} />
-      <meshBasicMaterial color="#F6CE48" wireframe transparent opacity={0.18} />
+      <meshBasicMaterial color="#C9A22E" wireframe transparent opacity={0.40} />
     </mesh>
   );
 }
@@ -95,7 +95,7 @@ function CenterCore() {
   return (
     <mesh ref={ref}>
       <octahedronGeometry args={[1, 0]} />
-      <meshBasicMaterial color="#F6CE48" />
+      <meshBasicMaterial color="#C9A22E" />
     </mesh>
   );
 }

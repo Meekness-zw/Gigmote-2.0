@@ -53,7 +53,7 @@ function Ripple({ delay }: { delay: number }) {
       <ringGeometry args={[0.95, 1, 64]} />
       <meshBasicMaterial
         ref={matRef}
-        color="#F6CE48"
+        color="#C9A22E"
         transparent
         opacity={0}
         side={THREE.DoubleSide}
@@ -75,7 +75,7 @@ function Core() {
   return (
     <mesh ref={ref}>
       <icosahedronGeometry args={[1, 0]} />
-      <meshBasicMaterial color="#F6CE48" />
+      <meshBasicMaterial color="#C9A22E" />
     </mesh>
   );
 }

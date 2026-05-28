@@ -62,11 +62,13 @@ interface Props {
   scene?: SceneKind;
 }
 
+// Light-theme: punch up the alpha so the accent ellipse is actually
+// visible on cream. Old values were tuned for dark backgrounds.
 const ACCENT_MAP: Record<NonNullable<Props["accent"]>, string> = {
-  gold: "rgba(246,206,72,0.15)",
-  teal: "rgba(154,210,210,0.13)",
-  sage: "rgba(199,214,195,0.13)",
-  orange: "rgba(232,166,126,0.13)",
+  gold: "rgba(246,206,72,0.35)",
+  teal: "rgba(47,140,140,0.28)",
+  sage: "rgba(111,142,106,0.26)",
+  orange: "rgba(193,106,63,0.28)",
 };
 
 export function PageHero({
@@ -124,7 +126,7 @@ export function PageHero({
         aria-hidden
         className="pointer-events-none absolute inset-0 z-10"
         style={{
-          background: `radial-gradient(ellipse 90% 60% at 50% 50%, transparent 0%, rgba(10,10,11,0.4) 70%, rgba(10,10,11,0.92) 100%), radial-gradient(ellipse 50% 40% at 50% 100%, ${ACCENT_MAP[accent]}, transparent 70%)`,
+          background: `radial-gradient(ellipse 90% 60% at 50% 50%, transparent 0%, rgba(249,249,245,0.4) 70%, rgba(249,249,245,0.92) 100%), radial-gradient(ellipse 50% 40% at 50% 100%, ${ACCENT_MAP[accent]}, transparent 70%)`,
         }}
       />
 

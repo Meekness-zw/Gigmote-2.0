@@ -13,11 +13,13 @@ import { useInView } from "@/lib/useInView";
  * but keeps the brand language consistent on every page.
  */
 
+// Deeper variants of each accent for legibility on the cream canvas —
+// the bright variants washed out completely on light backgrounds.
 const ACCENT_HEX: Record<string, string> = {
-  gold: "#F6CE48",
-  teal: "#9AD2D2",
-  sage: "#C7D6C3",
-  orange: "#E8A67E",
+  gold: "#C9A22E",
+  teal: "#2F8C8C",
+  sage: "#6F8E6A",
+  orange: "#C16A3F",
 };
 
 function Particles({ count = 200, color }: { count?: number; color: string }) {

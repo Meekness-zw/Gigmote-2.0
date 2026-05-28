@@ -69,7 +69,7 @@ export function Footer() {
               <Link
                 href="/contact"
                 data-cursor="magnet"
-                className="group inline-flex items-center justify-center gap-3 rounded-full bg-gold px-7 py-3.5 text-sm font-medium text-ink transition-transform hover:scale-[1.02]"
+                className="group inline-flex items-center justify-center gap-3 rounded-full bg-gold px-7 py-3.5 text-sm font-medium text-[#0F0F12] transition-transform hover:scale-[1.02]"
               >
                 Book a Strategy Call
                 <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

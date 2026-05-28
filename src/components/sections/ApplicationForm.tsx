@@ -240,7 +240,7 @@ export function ApplicationForm() {
               type="submit"
               data-cursor="magnet"
               disabled={status === "sending"}
-              className="group inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3 text-sm font-medium text-ink transition-all hover:scale-[1.02] disabled:opacity-60 disabled:scale-100"
+              className="group inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3 text-sm font-medium text-[#0F0F12] transition-all hover:scale-[1.02] disabled:opacity-60 disabled:scale-100"
             >
               {status === "sending" ? (
                 <>

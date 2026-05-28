@@ -38,9 +38,12 @@ function CoreMesh() {
       uMouse: { value: new THREE.Vector2(0, 0) },
       uDistortion: { value: 0.34 },
       uSpeed: { value: 0.55 },
-      uColorA: { value: new THREE.Color("#F6CE48") }, // gold
-      uColorB: { value: new THREE.Color("#0A0A0B") }, // ink
-      uColorC: { value: new THREE.Color("#FFEA97") }, // highlight
+      // Light theme: dark ink core, deep gold for the rim, lighter gold
+      // highlight. On cream the contrast inverts cleanly — silhouette
+      // reads as a dark sculpted form with a warm gold edge.
+      uColorA: { value: new THREE.Color("#C9A22E") }, // deep gold (rim)
+      uColorB: { value: new THREE.Color("#1A1A22") }, // dark ink (core)
+      uColorC: { value: new THREE.Color("#F6CE48") }, // bright gold highlight
       uRimPower: { value: 1.8 },
       uPulse: { value: 0 },
     }),
@@ -113,10 +116,10 @@ function WireOverlay() {
     <mesh ref={meshRef}>
       <icosahedronGeometry args={[1, 1]} />
       <meshBasicMaterial
-        color="#F6CE48"
+        color="#C9A22E"
         wireframe
         transparent
-        opacity={0.18}
+        opacity={0.35}
         depthWrite={false}
       />
     </mesh>
@@ -157,9 +160,9 @@ function Particles({ count = 600 }: { count?: number }) {
       <pointsMaterial
         size={0.025}
         sizeAttenuation
-        color="#F9F9F5"
+        color="#1A1A22"
         transparent
-        opacity={0.55}
+        opacity={0.32}
         depthWrite={false}
       />
     </points>
@@ -288,10 +291,12 @@ export function HeroScene({ className }: { className?: string }) {
         frameloop={inView ? "always" : "never"}
       >
         <Suspense fallback={null}>
-          <color attach="background" args={["#0A0A0B"]} />
-          <ambientLight intensity={0.4} />
-          <pointLight position={[3, 2, 2]} intensity={0.9} color="#F6CE48" />
-          <pointLight position={[-3, -2, -2]} intensity={0.5} color="#9AD2D2" />
+          {/* Cream canvas as Three.js scene background — matches the
+              site canvas so the WebGL blends into the page seamlessly. */}
+          <color attach="background" args={["#F9F9F5"]} />
+          <ambientLight intensity={0.5} />
+          <pointLight position={[3, 2, 2]} intensity={0.6} color="#F6CE48" />
+          <pointLight position={[-3, -2, -2]} intensity={0.35} color="#2F8C8C" />
 
           <CameraRig />
           <MouseParallaxRig>

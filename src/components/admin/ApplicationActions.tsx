@@ -8,7 +8,7 @@ type AppStatus = "new" | "reviewing" | "shortlisted" | "rejected" | "hired";
 
 const OPTIONS: Array<{ key: AppStatus; label: string; cls: string }> = [
   { key: "new", label: "New", cls: "border-gold/40 bg-gold/10 text-gold" },
-  { key: "reviewing", label: "Reviewing", cls: "border-cream/40 bg-cream/5 text-cream" },
+  { key: "reviewing", label: "Reviewing", cls: "border-cream/40 bg-ink/5 text-cream" },
   { key: "shortlisted", label: "Shortlist", cls: "border-teal/40 bg-teal/10 text-teal" },
   { key: "hired", label: "Hire", cls: "border-success/40 bg-success/10 text-success" },
   { key: "rejected", label: "Reject", cls: "border-cream-faint bg-cream-faint text-cream-mute" },

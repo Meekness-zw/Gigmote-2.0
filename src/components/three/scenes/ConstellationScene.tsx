@@ -69,13 +69,13 @@ function StarField() {
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[positions, 3]} />
         </bufferGeometry>
-        <pointsMaterial color="#F6CE48" size={0.08} transparent opacity={0.95} depthWrite={false} />
+        <pointsMaterial color="#C9A22E" size={0.08} transparent opacity={0.95} depthWrite={false} />
       </points>
       <lineSegments>
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[linePos, 3]} />
         </bufferGeometry>
-        <lineBasicMaterial color="#F9F9F5" transparent opacity={0.18} depthWrite={false} />
+        <lineBasicMaterial color="#1A1A22" transparent opacity={0.22} depthWrite={false} />
       </lineSegments>
     </group>
   );

@@ -62,7 +62,7 @@ export function ComingSoon({ title, description, eyebrow = "Inner page" }: Props
           <Link
             href="/contact"
             data-cursor="magnet"
-            className="rounded-full bg-gold px-6 py-2.5 text-sm font-medium text-ink transition-transform hover:scale-[1.02]"
+            className="rounded-full bg-gold px-6 py-2.5 text-sm font-medium text-[#0F0F12] transition-transform hover:scale-[1.02]"
           >
             Talk to us
           </Link>

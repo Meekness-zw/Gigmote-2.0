@@ -28,7 +28,7 @@ export default async function AdminJobsPage() {
         <Link
           href="/admin/jobs/new"
           data-cursor="magnet"
-          className="group inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-medium text-ink transition-transform hover:scale-[1.02]"
+          className="group inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-medium text-[#0F0F12] transition-transform hover:scale-[1.02]"
         >
           <Plus size={14} />
           New job post

@@ -196,7 +196,7 @@ export function JobEditor({ mode, initial = {} }: Props) {
             type="submit"
             disabled={status !== "idle"}
             data-cursor="magnet"
-            className="group inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-medium text-ink transition-transform hover:scale-[1.02] disabled:opacity-60 disabled:scale-100"
+            className="group inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-medium text-[#0F0F12] transition-transform hover:scale-[1.02] disabled:opacity-60 disabled:scale-100"
           >
             {status === "saving" ? (
               <>

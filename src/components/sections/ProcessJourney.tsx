@@ -150,7 +150,7 @@ export function ProcessJourney() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 75% 50% at 50% 60%, transparent 0%, rgba(10,10,11,0.55) 70%, rgba(10,10,11,0.92) 100%)",
+              "radial-gradient(ellipse 75% 50% at 50% 60%, transparent 0%, rgba(249,249,245,0.55) 70%, rgba(249,249,245,0.92) 100%)",
           }}
         />
 

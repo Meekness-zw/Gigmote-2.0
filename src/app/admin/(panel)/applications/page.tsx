@@ -191,7 +191,7 @@ function StatusBadge({ status }: { status: AppStatus }) {
     { label: string; border: string; bg: string; text: string; dot: string }
   > = {
     new: { label: "New", border: "border-gold/40", bg: "bg-gold/10", text: "text-gold", dot: "bg-gold" },
-    reviewing: { label: "Reviewing", border: "border-cream/40", bg: "bg-cream/5", text: "text-cream", dot: "bg-cream" },
+    reviewing: { label: "Reviewing", border: "border-cream/40", bg: "bg-ink/5", text: "text-cream", dot: "bg-ink" },
     shortlisted: { label: "Shortlisted", border: "border-teal/40", bg: "bg-teal/10", text: "text-teal", dot: "bg-teal" },
     hired: { label: "Hired", border: "border-success/40", bg: "bg-success/10", text: "text-success", dot: "bg-success" },
     rejected: { label: "Rejected", border: "border-cream-faint", bg: "bg-cream-faint", text: "text-cream-mute", dot: "bg-cream-mute" },
